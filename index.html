@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Personal page</title>
+<link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js?ver=3.3"></script>	
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+
+</head>
+
+
+<body>
+<div id="header">
+	<div id="logo"><a href="#"><img src="images/logo.png"></a></div>
+	<ul id="main-menu">
+    	<li><a href="#about">About Us</a></li>
+        <li><a href="#experience">Information</a></li>
+        <!-- <li><a href="#work">Work</a></li> -->
+        <li><a href="#connect">Application</a></li>
+    </ul>
+</div>
+
+<div id="container">
+
+<!--Begin About Section-->
+    <div id="about">
+    	<h1>About Us</h1>
+        <ul id="top-social">
+        </ul>
+        <div class="top-divider"></div>
+        <div class="content">
+        	<img src="images/designer-photo.jpg" />
+            <h2>Comrades! The beginning of the daily work on the formation of a position</h2>
+            <p>
+            In the same way, the implementation of the planned targets requires the definition and clarification of new proposals. Everyday practice shows that the new model of organizational activity facilitates the preparation and implementation of the directions of progressive development. However, it should not be forgotten that consultation with a broad asset largely determines the creation of new proposals. Comrades! The beginning of the daily work on the formation of a position plays an important role in the formation of forms of development. The task of the organization, and in particular consultation with a broad asset, allows for the implementation of important tasks on the development of positions taken by participants in relation to the tasks set.
+               </p> 
+            <ul id="service-icons">
+            	<li class="services-design">Design</li>
+                <li class="services-mobile">Mobile</li>
+                <li class="services-film">Film</li>
+                <li class="services-photo">Photo</li>
+            </ul>
+        </div>
+    <div class="bottom-divider"></div> 
+    </div>
+<!--End About Section-->
+
+<!--Begin Experience Section-->   
+    <div id="experience">
+    	<h1>Information</h1>
+        <div class="top-divider"></div>
+        <div class="content">
+            <div class="col">
+            <h2>First</h2>
+            <p>Likewise, the strengthening and development of the structure entails the process of introducing and modernizing mass participation systems. The task of the organization, especially the strengthening and development of the structure contributes to </p>
+            </div>
+            
+            <div class="col col-mid">
+            <h2>Second</h2>
+            <p> Likewise, the strengthening and development of the structure entails the process of introducing and modernizing mass participation systems. The task of the organization, especially the strengthening and development of the structure contributes to</p>
+            </div>
+            
+            <div class="col">
+            <h2>Threed</h2>
+            <p>ТLikewise, the strengthening and development of the structure entails the process of introducing and modernizing mass participation systems. The task of the organization, especially the strengthening and development of the structure contributes to</p>
+            </div>
+        </div>    
+        <div class="bottom-divider"></div>
+    </div>
+
+<!--Begin Connect Section-->  
+    <div id="connect">
+    	<h1>Application</h1>
+        <div class="top-divider"></div>
+        	<div class="content">
+            	<div id="form">
+                	<form action="">
+                    	<span>Name</span>
+                        <input type="text" name="name" class="name" id="name"/>
+                        <span>Phone</span>
+                        <input type="text" name="email" class="email" id="email"/>
+                        <span>Message</span>
+                        <textarea class="message" name="submite" id="message"></textarea>
+                        <input type="button" value="Submit" class="submit"onclick='sendMessage()'  id="button1">
+                    </form>
+                </div>
+                <div id="social-footer">
+                	<h2>Contact:</h2>
+                    <p>Comrades! The constant information and propaganda support of our activities is an interesting experiment in checking the personnel training system, meets the urgent needs.</a></p>
+                    <ul id="sm-links">
+                    	<li><a href="https://www.instagram.com/gordondmytro/" class="instagram">instagram</a></li>
+           				<li><a href="https://t.me/satoorun" class="telegram">telegram</a></li>
+            			<li><a href="https://join.skype.com/invite/" class="skype">skype</a></li>
+                        <li><a href="tel:119" class="phone">phone</a></li>
+
+                    </ul>
+                </div>
+            </div>
+    </div>
+<!--End Connect Section--> 
+
+</div>
+</body>
+ <!-- The JavaScript -->  
+<script type="text/javascript">
+
+
+
+
+
+function sendMessage() {
+  const botToken = '6988089012:AAHTR3m9vw8c65V_7A7vWNpMm7DNv8X5LLY'; // Замените на свой токен
+  const chatId = '5975226637'; // Замените на свой ID чата
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  // Простая проверка на пустые поля
+  if (!name || !email || !message) {
+    alert('Пожалуйста, заполните все поля.');
+    return;
+  }
+
+  const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(name)}\n${encodeURIComponent(email)}\n${encodeURIComponent(message)}`;
+
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Ошибка отправки сообщения');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Сообщение отправлено:', data);
+      // Можно добавить сообщение об успешной отправке пользователю
+      alert('Сообщение успешно отправлено!');
+    })
+    .catch(error => {
+      console.error('Ошибка:', error);
+      // Можно добавить сообщение об ошибке пользователю
+      alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
+    });
+
+  // Удаление кнопки (если необходимо)
+  const button = document.getElementById('button1');
+  if (button) {
+    button.remove();
+  }
+}
+
+
+
+
+</script>
+</html>
